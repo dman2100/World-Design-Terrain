@@ -5,35 +5,12 @@ using UnityEngine;
 public class TeleportTrigger : MonoBehaviour
 {
     public Transform spawnPoint;
-    public GameObject ui;
-    bool canTeleport;
-    Transform transformToTeleport;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            ui.SetActive(true);
-            canTeleport = true;
-            transformToTeleport = other.transform;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            ui.SetActive(false);
-            canTeleport = false;
-            transformToTeleport = null;
-        }
-    }
-
-    private void Update()
-    {
-        if (canTeleport && Input.GetKeyDown(KeyCode.E))
-        {
-            transformToTeleport.position = spawnPoint.position;
+            other.transform.position = spawnPoint.position;
         }
     }
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.tag == "Player")
+        if(other.tag == "Player")
         {
             GetCollected();
             Destroy(gameObject);
